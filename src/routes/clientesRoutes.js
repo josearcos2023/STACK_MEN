@@ -31,10 +31,10 @@ router.get('/list',async(req,res)=>{
     }
 });
 
-router.get('/edit/:id',async(req,res)=>{
+router.get('/edit/:idcli',async(req,res)=>{
     try{
-        const {id} = req.params;
-        const [cliente] = await pool.query('SELECT * FROM cliente WHERE idcli = ?', [id]);
+        const {idcli} = req.params;
+        const [cliente] = await pool.query('SELECT * FROM cliente WHERE idcli = ?', [idcli]);
         const clienteEdit = cliente[0];
         res.render('clientes/edit', {cliente:clienteEdit});
     }
@@ -46,9 +46,9 @@ router.get('/edit/:id',async(req,res)=>{
 router.post('/edit/:id',async(req,res)=>{
     try{
         const {nomcli,apecli,nrodnicli,telcli} = req.body;s
-        const {id} = req.params;
+        const {idcli} = req.params;
         const editCliente = {nomcli,apecli,nrodnicli,telcli};
-        await pool.query('UPDATE cliente SET ? WHERE idcli = ?', [editCliente, id]);
+        await pool.query('UPDATE cliente SET ? WHERE idcli = ?', [editCliente, idcli]);
         res.redirect('/list');
     }
     catch(err){
