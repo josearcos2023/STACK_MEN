@@ -2,7 +2,7 @@ import express from "express";
 import morgan from "morgan";
 import { engine } from "express-handlebars";
 import {join,dirname} from 'path';
-import { fileURLToPath} from "url";
+import {fileURLToPath} from "url";
 
 import clientesRoutes from './routes/clientesRoutes.js'
 
@@ -11,9 +11,11 @@ const app=express();
 const __dirname=dirname(fileURLToPath(import.meta.url));
 
 //SETTINGS
+app.set("view engine", "hbs")
 app.set('port',process.env.POT || 3000);
         //CONFIGURANDO CARPETA PARA VISTAS
 app.set('views',join(__dirname,'views'));
+
         //CONFIGURAR MOTOR DE PLANTILLAS
 app.engine('.hbs', engine({
     defaultLayout:'main',
@@ -21,8 +23,6 @@ app.engine('.hbs', engine({
     partialsDir:join(app.get('views'),'partials'),
     extname: '.hbs'
 }));
-
-app.set("view engine", "hbs")
 
 //To get or post
 
@@ -32,6 +32,7 @@ app.use(morgan('dev'));
         //WE'LL USE EXPRESS TO WORK WITH JSON FILES
 app.use(express.urlencoded({extended:false}));
 app.use(express.json());
+
 //ROUTES
 app.get('/',(req,res)=>{
     res.render('index')
