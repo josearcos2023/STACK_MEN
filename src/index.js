@@ -11,7 +11,7 @@ const app=express();
 const __dirname=dirname(fileURLToPath(import.meta.url));
 
 //SETTINGS
-app.set("view engine", "hbs")
+
 app.set('port',process.env.POT || 3000);
         //CONFIGURANDO CARPETA PARA VISTAS
 app.set('views',join(__dirname,'views'));
@@ -23,6 +23,7 @@ app.engine('.hbs', engine({
     partialsDir:join(app.get('views'),'partials'),
     extname: '.hbs'
 }));
+app.set("view engine", "hbs")
 
 //To get or post
 
