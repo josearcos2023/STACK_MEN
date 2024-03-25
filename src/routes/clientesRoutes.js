@@ -43,9 +43,9 @@ router.get('/edit/:idcli',async(req,res)=>{
     }
 })
 
-router.post('/edit/:id',async(req,res)=>{
+router.post('/edit/:idcli',async(req,res)=>{
     try{
-        const {nomcli,apecli,nrodnicli,telcli} = req.body;s
+        const {nomcli,apecli,nrodnicli,telcli} = req.body;
         const {idcli} = req.params;
         const editCliente = {nomcli,apecli,nrodnicli,telcli};
         await pool.query('UPDATE cliente SET ? WHERE idcli = ?', [editCliente, idcli]);
@@ -56,10 +56,10 @@ router.post('/edit/:id',async(req,res)=>{
     }
 });
 
-router.get('/delete/:id', async(req,res)=>{
+router.get('/delete/:idcli', async(req,res)=>{
     try{
-        const {id} = req.params;
-        await pool.query('DELETE FROM cliente WHERE idcli = ?', [id]);
+        const {idcli} = req.params;
+        await pool.query('DELETE FROM cliente WHERE idcli = ?', [idcli]);
         res.redirect('/list');
     }
     catch(err){

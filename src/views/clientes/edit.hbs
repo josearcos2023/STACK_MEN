@@ -6,7 +6,7 @@
                     <h3 class="text-uppercase">ACTUALIZAR CLIENTE</h3>
                 </div>
                 <div class="card-body">
-                    <form action="/edit/{{cliente.id}}" method="post">
+                    <form action="/edit/{{cliente.idcli}}" method="post">
                         <div class="input.group mt-2">
                             <label for="name" class="input-group-text">Nombre</label>
                             <input class="form-control" type="text" name="nomcli" id="nomcli" placeholder="Nombres" value="{{cliente.nomcli}}" autofocus required>
@@ -17,7 +17,7 @@
                         </div>
                         <div class="input.group mt-2">
                             <label for="age" class="input-group-text">Nro. DNI</label>
-                            <input class="form-control" type="text" name="nrodnicli" id="nrodnicli" placeholder="Nro. DNI" value="{{cliente.nroodnicli}}" required>
+                            <input class="form-control" type="text" name="nrodnicli" id="nrodnicli" placeholder="Nro. DNI" value="{{cliente.nrodnicli}}" required>
                         </div>
                         <div class="input.group mt-2">
                             <label for="age" class="input-group-text">Nro. Teléfono</label>
